@@ -10,5 +10,13 @@ RUN apt-get update && apt-get install -y python3 python3-pip curl
 # Install Ollama
 RUN curl https://ollama.ai/install.sh | sh
 
+# Install pip dependencies
+RUN pip install langchain langchain-community chromadb fastembed streamlit streamlit_chat
+
+ENV OLLAMA_HOST 0.0.0.0
+
+# Expose the Streamlit port
+EXPOSE 11434
+
 # Start the Ollama Server
 CMD ["ollama", "serve"]

@@ -8,3 +8,30 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/app
+      - ollama-data:/usr/share/ollama/.ollama/models
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+    networks:
+      - rag-network
+
+  ui:
+    image: testrag-ui
+    build:
+      context: .
+      dockerfile: Dockerfile.sl
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    depends_on:
+      - server
+    networks:
+      - rag-network
+
+volumes:
+  ollama-data:
+
+networks:
+  rag-network:
