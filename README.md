@@ -26,7 +26,7 @@ docker compose up --build -d
 **Note**: The first time you run these containers (or if you delete your docker volumes and I haven't implemented persistent storage yet), you'll need to run the following command to pull the model down locally.
 
 ```text
-docker exec -it testrag_server_1 ollama pull neural-chat
+docker exec -it testrag-server-1 ollama pull neural-chat
 ```
 
 Then:

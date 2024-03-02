@@ -7,7 +7,6 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - .:/app
       - ollama-data:/usr/share/ollama/.ollama/models
     ports:
       - "11434:11434"
@@ -24,7 +23,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - .:/app
+      - ./src:/app
     depends_on:
       - server
     networks:
