@@ -1,0 +1,25 @@
+# Version control
+.git/
+.gitignore
+
+# Ignore all log files and temp files.
+/log/*
+/tmp/*
+
+# # Ignore database configuration files that may contain sensitive data
+# /config/database.yml
+# /config/master.key
+
+# Ignore test, spec, and any other unnecessary directories
+/test/
+/spec/
+/features/
+
+# Ignore .env files to prevent sensitive data from being added to Docker images
+.env*
+.env.sample
+
+# Miscellaneous files and directories not needed in Docker image
+.DS_Store
+.editorconfig
+.vscode
