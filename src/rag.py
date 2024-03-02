@@ -23,6 +23,7 @@ class ChatCSV:
         - A PromptTemplate for constructing prompts with placeholders for question and context.
         """
         # Initialize the ChatOllama model with 'neural-chat'.
+        # TODO: Parameterize the modela and base_url
         self.model = ChatOllama(model="neural-chat", base_url='http://server:11434', verbose=True)
 
         # Initialize the RecursiveCharacterTextSplitter with specific chunk settings.
