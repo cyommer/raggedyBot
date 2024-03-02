@@ -4,15 +4,13 @@ FROM ubuntu:22.04
 # Set the working directory
 WORKDIR /app
 
-# Install curl, python3, and pip
-RUN apt-get update && apt-get install -y python3 python3-pip curl
+# Install curl
+RUN apt-get update && apt-get install -y curl
 
 # Install Ollama
 RUN curl https://ollama.ai/install.sh | sh
 
-# Install pip dependencies
-RUN pip install langchain langchain-community chromadb fastembed streamlit streamlit_chat
-
+# Set the Ollama host
 ENV OLLAMA_HOST 0.0.0.0
 
 # Expose the Streamlit port
