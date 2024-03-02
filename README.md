@@ -11,7 +11,7 @@ My initial code implementation was to follow the blog and use the code provided 
     **NOTE:** I am building a base container and installing Ollama, but this is not necessary. Ollama offers an official [server docker image](https://hub.docker.com/r/ollama/ollama) that you should probably use instead.
 * Add a Dockerfile for the StreamLit UI
 * Add a docker-compose file to orchestrate the two
-* Update the model connection string in [rag.py](./rag.py) to look at the docker service hostname and port
+* Update the model connection string in [rag.py](./src/rag.py) to look at the docker service hostname and port
 
 ## Running
 
@@ -28,6 +28,8 @@ docker compose up --build -d
 ```text
 docker exec -it testrag-server-1 ollama pull neural-chat
 ```
+
+**Another Note**: This is using the [neural-chat](https://ollama.com/library/neural-chat) model, but you can replace this with any model that [Ollama supports](https://ollama.com/library). Just remember you'll have to replace this in the model definition in [rag.py](./src/rag.py) before you pull a new one. Be sure, also, when choosing a model, you pay attention to the RAM requirements and such. For example, [Llama2](https://ollama.com/library/llama2) can be hefty.
 
 Then:
 
@@ -77,6 +79,7 @@ docker compose down --rmi all --volumes
 There are several initial improvements that I intend to make before making major changes to the logic:
 
 - [ ] Create .env to hold environment configs, like server name and port
+- [ ] Parameterize the model the app uses
 - [ ] Ensure model data is downloaded on project start
 - [ ] Persist model data on local disk so data isn't lost on docker volume removal
 - [ ] Switch server container to the official Ollama image instead of building our own
