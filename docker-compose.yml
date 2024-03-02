@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  server:
+    image: testrag-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
